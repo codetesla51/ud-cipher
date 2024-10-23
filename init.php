@@ -1,59 +1,28 @@
 <?php
 
-// Define a mapping for characters to Morse code using difficult-to-read symbols
+// Define a mapping for characters to Morse code using symbols
 $morseCodeMapping = [
-  "A" => "⌐▄", // Random symbol
-  "B" => "∩⊕", // Random symbol
-  "C" => "∴∵", // Random symbol
-  "D" => "⟆⟆", // Random symbol
-  "E" => "√", // Random symbol
-  "F" => "∫∏", // Random symbol
-  "G" => "◊◊", // Random symbol
-  "H" => "∫∫", // Random symbol
-  "I" => "⌊⌋", // Random symbol
-  "J" => "⦾", // Random symbol
-  "K" => "⩵⩵", // Random symbol
-  "L" => "∩∩", // Random symbol
-  "M" => "⍴", // Random symbol
-  "N" => "≡≡", // Random symbol
-  "O" => "↵", // Random symbol
-  "P" => "∈", // Random symbol
-  "Q" => "⌬", // Random symbol
-  "R" => "⊙", // Random symbol
-  "S" => "≈", // Random symbol
-  "T" => "∅", // Random symbol
-  "U" => "≮", // Random symbol
-  "V" => "≯", // Random symbol
-  "W" => "✳", // Random symbol
-  "X" => "◻", // Random symbol
-  "Y" => "❂", // Random symbol
-  "Z" => "∮", // Random symbol
-  "0" => "∘", // Random symbol
-  "1" => "⌘", // Random symbol
-  "2" => "⊛", // Random symbol
-  "3" => "⊖", // Random symbol
-  "4" => "⌿", // Random symbol
-  "5" => "∣", // Random symbol
-  "6" => "⚑", // Random symbol
-  "7" => "☆", // Random symbol
-  "8" => "✪", // Random symbol
-  "9" => "❁", // Random symbol
-  " " => "/", // Space as separator
-  "." => "❖", // Random symbol
-  "," => "➞", // Random symbol
-  "?" => "✉", // Random symbol
-  "!" => "⚠", // Random symbol
+  "A" => ["ꓯⳘⲁ⸝", "𓀢𝓐⸸", "🜛⛩ꚜ⸲", "㆜⚔𖣘🜂"],
+  "B" => ["⟟☩𑄹ⴺ", "𝔅𝓑𐋦♘", "⍐⧿🜖𝕭", "✸⚶🜥𐑮"],
+  "C" => ["𓍑ℭꚀ⟔", "♕꙰⏆☽", "✥ᚥ⚡⍰", "𖨒Ꝁ⨯⚚"],
+  // ... add the rest of the letters and numbers
+  "1" => ["⧨⚙♜🜚", "⫹𖣔♖⏉", "⚇𑄙⚟🜃", "♛⚇⏂🜲"],
+  "2" => ["⚊🜩⚜⧘", "⫾⚆𖣙⚡", "⚋⧶🜢⚗", "🜚♙⚊⩏"],
+  // ... include other digits
 ];
 
+// Encrypt function
 function encryptText($text, $mapping)
 {
   $encrypted = "";
 
   // Loop through each character in the text
   foreach (str_split(strtoupper($text)) as $char) {
-    // Append the Morse code or the equivalent symbol
+    // Check if the character is in the mapping
     if (array_key_exists($char, $mapping)) {
-      $encrypted .= $mapping[$char] . " ";
+      // Randomly pick one of the symbols
+      $symbols = $mapping[$char];
+      $encrypted .= $symbols[array_rand($symbols)] . " "; // Pick a random symbol
     } else {
       $encrypted .= "? "; // Unknown characters
     }
@@ -62,17 +31,26 @@ function encryptText($text, $mapping)
   return trim($encrypted); // Return the encrypted text
 }
 
+// Decrypt function
 function decryptText($encryptedText, $mapping)
 {
-  $reversedMapping = array_flip($mapping); // Reverse the mapping
+  $reversedMapping = [];
+
+  // Flatten the mapping so each symbol points back to its original letter
+  foreach ($mapping as $char => $symbols) {
+    foreach ($symbols as $symbol) {
+      $reversedMapping[$symbol] = $char;
+    }
+  }
+
   $decrypted = "";
 
-  // Split the encrypted text by spaces (Morse code words are separated by spaces)
+  // Split the encrypted text by spaces
   foreach (explode(" ", $encryptedText) as $code) {
     if (isset($reversedMapping[$code])) {
       $decrypted .= $reversedMapping[$code];
     } else {
-      $decrypted .= "?"; // Unknown Morse code
+      $decrypted .= "?"; // Unknown symbol
     }
   }
 
@@ -80,7 +58,7 @@ function decryptText($encryptedText, $mapping)
 }
 
 // Test example
-$text = "my na$[]}))-:::me is usman 13495";
+$text = "ab12";
 $encryptedText = encryptText($text, $morseCodeMapping);
 echo "Encrypted: " . $encryptedText . PHP_EOL;
 
