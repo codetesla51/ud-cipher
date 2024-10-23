@@ -11,18 +11,27 @@ $morseCodeMapping = [
   // ... include other digits
 ];
 
-// Encrypt function
-function encryptText($text, $mapping)
+// Define some noise symbols that don't overlap with Morse code
+$noiseSymbols = ["⩓", "⚿", "☢", "⛧", "♯", "⩠", "☰"];
+
+// Encrypt function with noise
+function encryptText($text, $mapping, $noiseSymbols)
 {
   $encrypted = "";
+  $noiseFrequency = rand(1, 3); // Add noise every 1 to 3 symbols
 
   // Loop through each character in the text
   foreach (str_split(strtoupper($text)) as $char) {
     // Check if the character is in the mapping
     if (array_key_exists($char, $mapping)) {
-      // Randomly pick one of the symbols
+      // Randomly pick one of the Morse symbols
       $symbols = $mapping[$char];
       $encrypted .= $symbols[array_rand($symbols)] . " "; // Pick a random symbol
+
+      // Optionally add noise
+      if (rand(1, $noiseFrequency) === 1) {
+        $encrypted .= $noiseSymbols[array_rand($noiseSymbols)] . " "; // Add a random noise symbol
+      }
     } else {
       $encrypted .= "? "; // Unknown characters
     }
@@ -31,8 +40,8 @@ function encryptText($text, $mapping)
   return trim($encrypted); // Return the encrypted text
 }
 
-// Decrypt function
-function decryptText($encryptedText, $mapping)
+// Decrypt function that ignores noise
+function decryptText($encryptedText, $mapping, $noiseSymbols)
 {
   $reversedMapping = [];
 
@@ -48,10 +57,11 @@ function decryptText($encryptedText, $mapping)
   // Split the encrypted text by spaces
   foreach (explode(" ", $encryptedText) as $code) {
     if (isset($reversedMapping[$code])) {
-      $decrypted .= $reversedMapping[$code];
-    } else {
-      $decrypted .= "?"; // Unknown symbol
+      $decrypted .= $reversedMapping[$code]; // Real Morse code symbol
+    } elseif (!in_array($code, $noiseSymbols)) {
+      $decrypted .= "?"; // Unknown symbol, not noise
     }
+    // Ignore noise symbols
   }
 
   return $decrypted; // Return the decrypted text
@@ -59,10 +69,10 @@ function decryptText($encryptedText, $mapping)
 
 // Test example
 $text = "ab12";
-$encryptedText = encryptText($text, $morseCodeMapping);
-echo "Encrypted: " . $encryptedText . PHP_EOL;
+$encryptedText = encryptText($text, $morseCodeMapping, $noiseSymbols);
+echo "Encrypted with noise: " . $encryptedText . PHP_EOL;
 
-$decryptedText = decryptText($encryptedText, $morseCodeMapping);
+$decryptedText = decryptText($encryptedText, $morseCodeMapping, $noiseSymbols);
 echo "Decrypted: " . $decryptedText . PHP_EOL;
 
 ?>
