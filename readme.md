@@ -5,9 +5,7 @@
 ## Documentation Site
 [ud-cipher](https://ud-cipher.vercel.app/)
 
-**UD-Cipher** is a lightweight PHP and JavaScript library for encoding and decoding text using customizable symbol mappings, noise symbols, and a Caesar cipher variant. This mini encoding library provides an easy way to obfuscate text, making it suitable for various applications where text privacy is a concern. The encoding utilizes ancient symbols such as:
-
-𐭁𑉅𐬠𓏉, 𓂋𑅕𑀜𐬋, 𐬞𐬰𑀅𓋎, ☨, 𑀤𑌼𑍑𓅜, 𐬴𓈃𑌭𓇈, 𓁄𓀲𓋆𑁼, ⚰, 𐌀𐌈𐬅𑁮, 𑄧𑀌𓌵𑁈, ✬, 𓌔𑌞𐌌𓍏, ♖, 𑀼𐬊𑌆𓉎, ⨟, 𐬴𐬙𓍋𓈚
+**UD-Cipher** is a lightweight PHP and JavaScript library for encoding and decoding text using customizable symbol mappings, noise symbols, and a Caesar cipher variant. This mini encoding library provides an easy way to obfuscate text, making it suitable for various applications where text privacy is a concern.
 ## Features
 - **Simple Text Encoding and Decoding**: Easily encode and decode text strings.
 - **Customizable Symbol Mappings**: Define your own mappings for characters to symbols.
