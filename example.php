@@ -3,12 +3,12 @@
 require "src/init.php";
 use UDC\SymbolMapper;
 use UDC\NoiseGenerator;
-use UDC\TextEncryptor;
+use UDC\UDC;
 // Define mappings and noise symbols
 // Initialize the encryption components
 $symbolMapper = new SymbolMapper($mappings);
 $noiseGenerator = new NoiseGenerator($noiseSymbols);
-$encryptor = new TextEncryptor($symbolMapper, $noiseGenerator);
+$encryptor = new UDC($symbolMapper, $noiseGenerator);
 
 // Test text
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

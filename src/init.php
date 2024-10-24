@@ -232,7 +232,7 @@ class NoiseGenerator
 }
 
 // Main class to encrypt and decrypt text
-class TextEncryptor
+class UDC
 {
   private $symbolMapper;
   private $noiseGenerator;
