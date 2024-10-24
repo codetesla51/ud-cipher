@@ -100,8 +100,9 @@ Copy code
 **JavaScript version**
 The JavaScript version offers similar functionalities. It
                     can be implemented as follows:
-                    
       **include library**
+
+
      ```bash
      <script src="udc/init.js"></script>
      ```
