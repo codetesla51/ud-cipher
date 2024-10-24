@@ -36,13 +36,7 @@ This library should not and cannot be used for production encoding or large-scal
 Include the UD-Cipher Library
 
 In your PHP file, include the library and use the necessary classes:
-<<<<<<< HEAD
 ```php
-=======
-```bash
-php
-
->>>>>>> refs/remotes/origin/main
 require "src/init.php";
 use UDC\SymbolMapper;
 use UDC\NoiseGenerator;
@@ -51,12 +45,7 @@ use UDC\UDC
 3. **Instantiate the Classes**
 
 Call the UD-Cipher methods for encoding:
-<<<<<<< HEAD
 ```php
-=======
-```bash
-php
->>>>>>> refs/remotes/origin/main
 
 $symbolMapper = new SymbolMapper($mappings);
 $noiseGenerator = new NoiseGenerator($noiseSymbols);
@@ -65,13 +54,7 @@ $encryptor = new UDC($symbolMapper, $noiseGenerator);
 4.**Handle Encoding and Decoding in Your Application**
 
 Here’s an example of how to process text input:
-<<<<<<< HEAD
 ```php
-=======
-```bash
-php
-
->>>>>>> refs/remotes/origin/main
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $text = $_POST["text"]; // User input from the form
 
@@ -84,8 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "Decrypted Text: " . $decryptedText;
 }
 ```
- **Example**
-
+**Example**
 For a simple HTML form to input text, you could use:
 ```html
 <!DOCTYPE html>
@@ -106,34 +88,18 @@ For a simple HTML form to input text, you could use:
 </html>
 
 ```
-
 **JavaScript version**
 The JavaScript version offers similar functionalities. It
  can be implemented as follows:
-<<<<<<< HEAD
-           
-                   <script src="udc/init.js"></script>
+ 
+    <script src="udc/init.js"></script>
                    
  **initialize**
     
-         const symbolMapper = new SymbolMapper(mappings);
-         const noiseGenerator = new NoiseGenerator(noiseSymbols);
-        const encryptor = new UDC(symbolMapper, noiseGenerator);
+    const symbolMapper = new SymbolMapper(mappings);
+    const noiseGenerator = new NoiseGenerator(noiseSymbols);
+    const encryptor = new UDC(symbolMapper, noiseGenerator);
 
-=======
-
-      **Include Library:**
-
-```html
-<script src="udc/init.js"></script>
-```
-     **initialize**
-     ```javascript
-     const symbolMapper = new SymbolMapper(mappings);
-const noiseGenerator = new NoiseGenerator(noiseSymbols);
-const encryptor = new UDC(symbolMapper, noiseGenerator);
-```
->>>>>>> refs/remotes/origin/main
 **examples**
 ```javascript
 const encryptedText = encryptor.encryptText("Hello World");
