@@ -1,6 +1,9 @@
 ## UD-Cipher
 ![MIT License](https://img.shields.io/badge/License-MIT-green.svg)
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+<br>
+#Documentation Site
+[ud-cipher](https://ud-cipher.vercel.app/)
 
 **UD-Cipher** is a lightweight PHP and JavaScript library for encoding and decoding text using customizable symbol mappings, noise symbols, and a Caesar cipher variant. This mini encoding library provides an easy way to obfuscate text, making it suitable for various applications where text privacy is a concern. The encoding utilizes ancient symbols such as:
 
@@ -90,6 +93,34 @@ Copy code
     </form>
 </body>
 </html>
+```
+**JavaScript version**
+The JavaScript version offers similar functionalities. It
+                    can be implemented as follows:
+                    
+      **include library**
+     ```bash
+     <script src="udc/init.js"></script>
+     ```
+     **initialize**
+     ```bash
+     const symbolMapper = new SymbolMapper(mappings);
+const noiseGenerator = new NoiseGenerator(noiseSymbols);
+const encryptor = new UDC(symbolMapper, noiseGenerator);
+```
+**examples**
+```bash
+const encryptedText = encryptor.encryptText("Hello World");
+console.log("Encrypted Text:", encryptedText);
+const decryptedText = encryptor.decryptText(encryptedText);
+console.log("Decrypted Text:", decryptedText);
+```
+```bash
+const encryptedText = encryptor.encryptText(text);
+console.log("Original Text:", text);
+console.log("Encrypted Text:", encryptedText);
+const decryptedText = encryptor.decryptText(encryptedText);
+console.log("Decrypted Text:", decryptedText);
 ```
 **Project Explanation**
 UD-Cipher provides a simple interface to encode and decode text. The library uses a mapping of characters to symbols, which can be customized according to your needs. During encoding, random noise symbols can be added to increase the complexity of the encoded text.
