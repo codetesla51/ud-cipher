@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>UD-Cipher Documentation</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <header>
+            <h1>UD-Cipher Documentation</h1>
+            <nav>
+                <ul id="nav-list">
+                    <li>
+                        <a href="#about"
+                            ><i class="fas fa-info-circle"></i> About</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#features"
+                            ><i class="fas fa-star"></i> Features</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#installation"
+                            ><i class="fas fa-cogs"></i> Installation</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#usage"><i class="fas fa-code"></i> Usage</a>
+                    </li>
+                    <li>
+                        <a href="#examples"
+                            ><i class="fas fa-list"></i> Examples</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#license"
+                            ><i class="fas fa-file-contract"></i> License</a
+                        >
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section id="about">
+                <h2>About UD-Cipher</h2>
+                <p>
+                    UD-Cipher is a lightweight PHP and JavaScript library for
+                    encoding and decoding text using customizable symbol
+                    mappings and noise symbols. This mini encoding library
+                    provides an easy way to obfuscate text, making it suitable
+                    for various applications where text privacy is a concern.
+                </p>
+            </section>
+
+            <section id="features">
+                <h2>Features</h2>
+                <ul>
+                    <li>Simple text encoding and decoding.</li>
+                    <li>
+                        Customizable symbol mappings for different characters.
+                    </li>
+                    <li>
+                        Random noise symbols during encoding for increased
+                        complexity.
+                    </li>
+                    <li>Easy to use and lightweight.</li>
+                </ul>
+            </section>
+
+            <section id="installation">
+                <h2>Installation</h2>
+                <h3>Prerequisites</h3>
+                <p>PHP 7.4+</p>
+                <h3>Step-by-step Guide</h3>
+                <ol>
+                    <li>
+                        <strong>Clone the Repository</strong>
+                        <pre><code>git clone https://github.com/codetesla51/ud-cipher.git
+cd ud-cipher
+                    </code></pre>
+                    </li>
+                    <li><strong>Open Your Editor/IDE</strong></li>
+                    <li>
+                        <strong>Include the UD-Cipher Library</strong>
+                        <pre><code>require "src/init.php";
+use UDC\SymbolMapper;
+use UDC\NoiseGenerator;
+use UDC\UDC;</code></pre>
+                    </li>
+                    <li>
+                        <strong>Define Your Mappings and Noise Symbols</strong>
+                        <pre><code> $mappings = [
+     "A" => ["𑁄𑀲𓋆𑁼", "𑀦𑌶𑁛𐬌", "𑁋𓁋𑀐𓅐", "𓂇𓅕𐬛𐬰"],
+  "B" => ["𑁭𑌦𓈉𑁜", "𐬓𑁒𓍯𓀍", "𓈉𐬯𑁠𑅕", "𑁷𓋣𑌨𓌪"],
+  "C" => ["𓏭𓄿𐬀𑌳", "𐬢𑁦𓇽𓂷", "𑀘𐬢𑁈𑁠", "𓍗𑁖𓈏𐬮"],
+]
+
+$noiseSymbols = [  "⩓","⚿", "☢","⛧","♯","⩠"];</code></pre>
+                    </li>
+                    <li>
+                        <strong>Instantiate the Classes</strong>
+                        <pre><code>$symbolMapper = new SymbolMapper($mappings);
+$noiseGenerator = new NoiseGenerator($noiseSymbols);
+$encryptor = new UDC($symbolMapper, $noiseGenerator);</code></pre>
+                    </li>
+                </ol>
+            </section>
+
+            <section id="usage">
+                <h2>Usage</h2>
+                <p>
+                    For encoding and decoding text, use the following PHP code:
+                </p>
+                <pre><code>if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $text = $_POST["text"];
+    $encryptedText = $encryptor->encryptText($text);
+    echo "Encrypted Text: " . $encryptedText;
+    $decryptedText = $encryptor->decryptText($encryptedText);
+    echo "Decrypted Text: " . $decryptedText;
+}</code></pre>
+                <h3>JavaScript Version</h3>
+                <p>
+                    The JavaScript version offers similar functionalities. It
+                    can be implemented as follows:
+                </p>
+                <pre><code>const symbolMapper = new SymbolMapper(mappings);
+const noiseGenerator = new NoiseGenerator(noiseSymbols);
+const encryptor = new UDC(symbolMapper, noiseGenerator);
+
+const encryptedText = encryptor.encryptText("Hello World");
+console.log("Encrypted Text:", encryptedText);
+const decryptedText = encryptor.decryptText(encryptedText);
+console.log("Decrypted Text:", decryptedText);</code></pre>
+            </section>
+
+            <section id="examples">
+                <h2>Examples</h2>
+                <h3>PHP Examples</h3>
+                <p>Here are some examples of using UD-Cipher in PHP:</p>
+                <h4>Example 1: Basic Encoding and Decoding</h4>
+                <pre><code>$text = "Hello World";
+$encryptedText = $encryptor->encryptText($text);
+echo "Original Text: $text\n";
+echo "Encrypted Text: $encryptedText\n";
+$decryptedText = $encryptor->decryptText($encryptedText);
+echo "Decrypted Text: $decryptedText\n;</code></pre>
+                <p><strong>Expected Output:</strong></p>
+                <pre><code>Original Text: Hello World
+Encrypted Text: 𐭁𑉅𐬠𓏉 𓂋𑅕𑀜𐬋 𐬞𐬰𑀅𓋎 ☨ 𑀤𑌼𑍑𓅜 𐬴𓈃𑌭𓇈 𓁄𓀲𓋆𑁼 ⚰ 𐌀𐌈𐬅𑁮 𑄧𑀌𓌵𑁈 ✬ 𓌔𑌞𐌌𓍏 ♖ 𑀼𐬊𑌆𓉎 ⨟ 𐬴𐬙𓍋𓈚
+Decrypted Text: Hello World</code></pre>
+
+                <h3>JavaScript Examples</h3>
+                <p>Here are some examples of using UD-Cipher in JavaScript:</p>
+                <h4>Example 1: Basic Encoding and Decoding</h4>
+                <pre><code>const text = "Hello World";
+const encryptedText = encryptor.encryptText(text);
+console.log("Original Text:", text);
+console.log("Encrypted Text:", encryptedText);
+const decryptedText = encryptor.decryptText(encryptedText);
+console.log("Decrypted Text:", decryptedText);</code></pre>
+                <p><strong>Expected Output:</strong></p>
+                <pre><code>Original Text: Hello World
+Encrypted Text: 𐭁𑉅𐬠𓏉 𓂋𑅕𑀜𐬋 𐬞𐬰𑀅𓋎 ☨ 𑀤𑌼𑍑𓅜 𐬴𓈃𑌭𓇈 𓁄𓀲𓋆𑁼 ⚰ 𐌀𐌈𐬅𑁮 𑄧𑀌𓌵𑁈 ✬ 𓌔𑌞𐌌𓍏 ♖ 𑀼𐬊𑌆𓉎 ⨟ 𐬴𐬙𓍋𓈚
+Decrypted Text: Hello World</code></pre>
+
+            </section>
+        </main>
+    </body>
+</html>

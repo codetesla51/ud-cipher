@@ -1,6 +1,21 @@
 <?php
 namespace Encryption;
-// Define a mapping for characters to  code using symbols
+/**
+ * Mappings for characters and their corresponding symbols.
+ *
+ * This array contains mappings of alphanumeric characters and some symbols to their
+ * respective representations in various scripts or languages. Each character is mapped
+ * to an array of four unique representations.
+ *
+ * Format:
+ * - Key: A single alphanumeric character or symbol (e.g., "A", "B", "C", "0", "1", etc.)
+ * - Value: An array of strings representing the mappings for that character.
+ *
+ * Example:
+ * "A" => ["𑁄𑀲𓋆𑁼", "𑀦𑌶𑁛𐬌", "𑁋𓁋𑀐𓅐", "𓂇𓅕𐬛𐬰"]
+ *
+ * @var array $mappings
+ */
 $mappings = [
   "A" => ["𑁄𑀲𓋆𑁼", "𑀦𑌶𑁛𐬌", "𑁋𓁋𑀐𓅐", "𓂇𓅕𐬛𐬰"],
   "B" => ["𑁭𑌦𓈉𑁜", "𐬓𑁒𓍯𓀍", "𓈉𐬯𑁠𑅕", "𑁷𓋣𑌨𓌪"],
