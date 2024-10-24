@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $decryptedText = $encryptor->decryptText($encryptedText);
     echo "Decrypted Text: " . $decryptedText;
 }
-```
+
  **Example**
 
 For a simple HTML form to input text, you could use:
