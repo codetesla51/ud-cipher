@@ -105,7 +105,7 @@ The JavaScript version offers similar functionalities. It
 
 ```html
 <script src="udc/init.js"></script>
-
+```
      **initialize**
      ```javascript
      const symbolMapper = new SymbolMapper(mappings);
