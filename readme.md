@@ -93,8 +93,8 @@ Copy code
         <input type="submit" value="Encode/Decode">
     </form>
 </body>
-</html>
-```
+</html>```
+
 **JavaScript version**
 The JavaScript version offers similar functionalities. It
                     can be implemented as follows:
