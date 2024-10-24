@@ -1,4 +1,4 @@
-<h2 style="color:#008afa"> UD-Cipher</h2>
+## UD-Cipher
 ![MIT License](https://img.shields.io/badge/License-MIT-green.svg)
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 
