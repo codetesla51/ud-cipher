@@ -101,12 +101,11 @@ Copy code
 The JavaScript version offers similar functionalities. It
  can be implemented as follows:
 
-      **include library**
+      **Include Library:**
 
+```html
+<script src="udc/init.js"></script>
 
-     ```html
-     <script src="udc/init.js"></script>
-     ```
      **initialize**
      ```javascript
      const symbolMapper = new SymbolMapper(mappings);
