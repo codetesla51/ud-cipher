@@ -36,9 +36,7 @@ This library should not and cannot be used for production encoding or large-scal
 Include the UD-Cipher Library
 
 In your PHP file, include the library and use the necessary classes:
-```bash
-php
-Copy code
+```php
 require "src/init.php";
 use UDC\SymbolMapper;
 use UDC\NoiseGenerator;
@@ -47,9 +45,8 @@ use UDC\UDC
 3. **Instantiate the Classes**
 
 Call the UD-Cipher methods for encoding:
-```bash
-php
-Copy code
+```php
+
 $symbolMapper = new SymbolMapper($mappings);
 $noiseGenerator = new NoiseGenerator($noiseSymbols);
 $encryptor = new UDC($symbolMapper, $noiseGenerator);
@@ -57,9 +54,7 @@ $encryptor = new UDC($symbolMapper, $noiseGenerator);
 4.**Handle Encoding and Decoding in Your Application**
 
 Here’s an example of how to process text input:
-```bash
-php
-Copy code
+```php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $text = $_POST["text"]; // User input from the form
 
@@ -74,9 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ```
 **Example**
 For a simple HTML form to input text, you could use:
-```bash
-html
-Copy code
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -93,35 +86,34 @@ Copy code
     </form>
 </body>
 </html>
+
 ```
 **JavaScript version**
 The JavaScript version offers similar functionalities. It
-                    can be implemented as follows:
-                    
-      **include library**
-     ```bash
-     <script src="udc/init.js"></script>
-     ```
-     **initialize**
-     ```bash
-     const symbolMapper = new SymbolMapper(mappings);
-const noiseGenerator = new NoiseGenerator(noiseSymbols);
-const encryptor = new UDC(symbolMapper, noiseGenerator);
-```
+ can be implemented as follows:
+           
+                   <script src="udc/init.js"></script>
+                   
+ **initialize**
+    
+         const symbolMapper = new SymbolMapper(mappings);
+         const noiseGenerator = new NoiseGenerator(noiseSymbols);
+        const encryptor = new UDC(symbolMapper, noiseGenerator);
+
 **examples**
-```bash
+```javascript
 const encryptedText = encryptor.encryptText("Hello World");
 console.log("Encrypted Text:", encryptedText);
 const decryptedText = encryptor.decryptText(encryptedText);
 console.log("Decrypted Text:", decryptedText);
 ```
-```bash
+```javascript
 const encryptedText = encryptor.encryptText(text);
 console.log("Original Text:", text);
 console.log("Encrypted Text:", encryptedText);
 const decryptedText = encryptor.decryptText(encryptedText);
 console.log("Decrypted Text:", decryptedText);
-```
+   ```
 **Project Explanation**
 UD-Cipher provides a simple interface to encode and decode text. The library uses a mapping of characters to symbols, which can be customized according to your needs. During encoding, random noise symbols can be added to increase the complexity of the encoded text.
 
