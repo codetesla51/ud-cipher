@@ -38,7 +38,7 @@ Include the UD-Cipher Library
 In your PHP file, include the library and use the necessary classes:
 ```bash
 php
-Copy code
+
 require "src/init.php";
 use UDC\SymbolMapper;
 use UDC\NoiseGenerator;
@@ -49,7 +49,7 @@ use UDC\UDC
 Call the UD-Cipher methods for encoding:
 ```bash
 php
-Copy code
+
 $symbolMapper = new SymbolMapper($mappings);
 $noiseGenerator = new NoiseGenerator($noiseSymbols);
 $encryptor = new UDC($symbolMapper, $noiseGenerator);
@@ -59,7 +59,7 @@ $encryptor = new UDC($symbolMapper, $noiseGenerator);
 Here’s an example of how to process text input:
 ```bash
 php
-Copy code
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $text = $_POST["text"]; // User input from the form
 
@@ -72,7 +72,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "Decrypted Text: " . $decryptedText;
 }
 ```
-**Example**
+ **Example**
+
 For a simple HTML form to input text, you could use:
 ```bash
 html
