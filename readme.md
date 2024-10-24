@@ -100,15 +100,15 @@ Copy code
 **JavaScript version**
 The JavaScript version offers similar functionalities. It
  can be implemented as follows:
-```
+
       **include library**
 
 
-     ```bash
+     ```html
      <script src="udc/init.js"></script>
      ```
      **initialize**
-     ```bash
+     ```javascript
      const symbolMapper = new SymbolMapper(mappings);
 const noiseGenerator = new NoiseGenerator(noiseSymbols);
 const encryptor = new UDC(symbolMapper, noiseGenerator);
